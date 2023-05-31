@@ -3,7 +3,8 @@
 
     <div class="d-flex align-items-center justify-content-between">
         <a href="./index.php" class="logo d-flex align-items-center">
-            <img src="assets/img/icon.png" alt="">
+            <!-- <img src="assets/img/icon.png" alt=""> -->
+            <img src="https://www.telkom.co.id/images/icon/fav.ico" class="" alt="">
             <span class="d-none d-lg-block ms-2">Rekap Karyawan</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>

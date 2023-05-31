@@ -5,15 +5,14 @@ session_start();
 require './koneksi.php';
 
 if ($_SESSION['admin'] || $_SESSION['karyawan']) {
-    if($_SESSION['admin']){
+    if ($_SESSION['admin']) {
         $user = $_SESSION['admin'];
     }
-    if($_SESSION['karyawan']){
+    if ($_SESSION['karyawan']) {
         $user = '';
         $user = $_SESSION['karyawan'];
     }
-}
-else{
+} else {
     header('location:login.php');
 }
 
@@ -134,12 +133,11 @@ include 'head.php';
                                                         datasets: [{
                                                             label: 'Biaya Pengisian',
                                                             <?php
-                                                            
+
                                                             include './data_pengisian_bbm_admin.php';
 
                                                             ?>
-                                                            data: [<?= $data_jan['biaya'] ?>, <?= $data_feb['biaya'] ?>, <?= $data_mar['biaya'] ?>, <?= $data_aprl['biaya'] ?>, <?= $data_mei['biaya'] ?>, <?= $data_jun['biaya'] ?>, <?= $data_jul['biaya'] ?>, <?= $data_ags['biaya'] ?>, <?= $data_sep['biaya'] ?>, <?= $data_okt['biaya'] ?>, <?= $data_nov['biaya'] ?>, <?= $data_des['biaya'] ?>
-                                                            ],
+                                                            data: [<?= $data_jan['biaya'] ?>, <?= $data_feb['biaya'] ?>, <?= $data_mar['biaya'] ?>, <?= $data_aprl['biaya'] ?>, <?= $data_mei['biaya'] ?>, <?= $data_jun['biaya'] ?>, <?= $data_jul['biaya'] ?>, <?= $data_ags['biaya'] ?>, <?= $data_sep['biaya'] ?>, <?= $data_okt['biaya'] ?>, <?= $data_nov['biaya'] ?>, <?= $data_des['biaya'] ?>],
                                                             backgroundColor: [
                                                                 'rgba(255, 99, 132, 0.2)',
                                                                 'rgba(255, 159, 64, 0.2)',
@@ -277,12 +275,11 @@ include 'head.php';
                                                 datasets: [{
                                                     label: 'Sembunyikan Data',
                                                     <?php
-                                                            
+
                                                     include './data_pengisian_bbm_karyawan.php';
 
                                                     ?>
-                                                    data: [<?= $data_jan['biaya'] ?>, <?= $data_feb['biaya'] ?>, <?= $data_mar['biaya'] ?>, <?= $data_aprl['biaya'] ?>, <?= $data_mei['biaya'] ?>, <?= $data_jun['biaya'] ?>, <?= $data_jul['biaya'] ?>, <?= $data_ags['biaya'] ?>, <?= $data_sep['biaya'] ?>, <?= $data_okt['biaya'] ?>, <?= $data_nov['biaya'] ?>, <?= $data_des['biaya'] ?>
-                                                    ],
+                                                    data: [<?= $data_jan['biaya'] ?>, <?= $data_feb['biaya'] ?>, <?= $data_mar['biaya'] ?>, <?= $data_aprl['biaya'] ?>, <?= $data_mei['biaya'] ?>, <?= $data_jun['biaya'] ?>, <?= $data_jul['biaya'] ?>, <?= $data_ags['biaya'] ?>, <?= $data_sep['biaya'] ?>, <?= $data_okt['biaya'] ?>, <?= $data_nov['biaya'] ?>, <?= $data_des['biaya'] ?>],
                                                     backgroundColor: [
                                                         'rgba(255, 99, 132, 0.2)',
                                                         'rgba(255, 159, 64, 0.2)',

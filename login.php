@@ -25,8 +25,7 @@ if (isset($_POST['login'])) {
         if ($hasil['level'] == 'Admin') {
             $_SESSION['admin'] = $hasil['username'];
             header('location:index.php');
-        }
-        else if ($hasil['level'] == 'Karyawan') {
+        } else if ($hasil['level'] == 'Karyawan') {
             $_SESSION['karyawan'] = $hasil['username'];
             header('location:index.php');
         }
@@ -64,8 +63,9 @@ include 'head.php';
 
                             <div class="d-flex justify-content-center py-4">
                                 <a href="" class="logo d-flex align-items-center w-auto">
-                                    <img src="assets/img/icon.png" alt="Logo" style="  max-height: 70px;">
-                                    <span class="ms-2">Rekap Karyawan</span>
+                                    <!-- <img src="assets/img/icon.png" alt="Logo" style="max-height: 70px;"> -->
+                                    <!-- <span class="ms-2">Rekap Karyawan</span> -->
+                                    <img src="https://www.telkom.co.id/images/logo_horizontal.svg" alt="Logo" style="max-height: 70px;">
                                 </a>
                             </div><!-- End Logo -->
 

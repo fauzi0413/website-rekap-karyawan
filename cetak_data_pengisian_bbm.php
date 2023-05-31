@@ -24,7 +24,40 @@ $data = mysqli_fetch_assoc($sql);
 <html lang="en">
 
 <?php
-$title = "Data Pengisian BBM";
+$Y = date('Y');
+$bulan = $_GET['bulan'];
+
+if ($bulan == 1) {
+    $nama_bulan = "Januari";
+} else if ($bulan == 2) {
+    $nama_bulan = "Februari";
+} else if ($bulan == 3) {
+    $nama_bulan = "Maret";
+} else if ($bulan == 4) {
+    $nama_bulan = "April";
+} else if ($bulan == 5) {
+    $nama_bulan = "Mei";
+} else if ($bulan == 6) {
+    $nama_bulan = "Juni";
+} else if ($bulan == 7) {
+    $nama_bulan = "Juli";
+} else if ($bulan == 8) {
+    $nama_bulan = "Agustus";
+} else if ($bulan == 9) {
+    $nama_bulan = "September";
+} else if ($bulan == 10) {
+    $nama_bulan = "Oktober";
+} else if ($bulan == 11) {
+    $nama_bulan = "November";
+} else if ($bulan == 12) {
+    $nama_bulan = "Desember";
+}
+
+if ($bulan) {
+    $title = "Data Pengisian BBM Bulan $nama_bulan Tahun $Y";
+} else {
+    $title = "Data Pengisian BBM Tahun $Y";
+}
 
 include 'head.php';
 
@@ -32,38 +65,22 @@ include 'head.php';
 
 <body>
 
-    <?php
-
-    include './navbar.php';
-
-    ?>
-
-    <main id="main" class="main">
+    <main>
 
         <div class="pagetitle row">
             <div class="col-10">
                 <h1>Data Pengisian BBM Karyawan</h1>
                 <nav>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
-                        <li class="breadcrumb-item active">Data Pengisian BBM</li>
+                        <?php
+                        if ($bulan) {
+                        ?>
+                            <li class="breadcrumb-item active">Data Per Bulan <?= $nama_bulan ?></li>
+                        <?php
+                        }
+                        ?>
                     </ol>
                 </nav>
-            </div>
-            <div class="col-2 ">
-                <?php
-                if ($data['level'] == "Admin") {
-                    if ($_GET['bulan'] != "") {
-                ?>
-                        <a href="./cetak_data_pengisian_bbm.php?bulan=<?= $_GET['bulan'] ?>" class="btn btn-success">Print <i class="ms-1 bi bi-printer-fill"></i></a>
-                    <?php
-                    } else {
-                    ?>
-                        <a href="./cetak_data_pengisian_bbm.php" class="btn btn-success">Print <i class="ms-1 bi bi-printer-fill"></i></a>
-                <?php
-                    }
-                }
-                ?>
             </div>
         </div><!-- End Page Title -->
 
@@ -164,40 +181,6 @@ include 'head.php';
                                         // 
                                     } elseif ($data['level'] == "Admin") {
                                     ?>
-                                        <!-- Search Bar -->
-                                        <div class="my-3 row">
-                                            <div class="col-7">
-                                                <form class="search-form d-flex align-items-center" method="POST" action="">
-                                                    <input type="text" name="search" placeholder="Search by kode transaksi" class="form-control" style="border-radius: 10px 0 0 10px;" required>
-                                                    <button type="submit" class="btn btn-primary" style="border-radius: 0 10px 10px 0;"><i class="bi bi-search"></i></button>
-                                                </form>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="dropdown">
-                                                    <button class="w-100 btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        Filter Berdasarkan Bulan
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="?bulan=1">Januari</a></li>
-                                                        <li><a class="dropdown-item" href="?bulan=2">Februari</a></li>
-                                                        <li><a class="dropdown-item" href="?bulan=3">Maret</a></li>
-                                                        <li><a class="dropdown-item" href="?bulan=4">April</a></li>
-                                                        <li><a class="dropdown-item" href="?bulan=5">Mei</a></li>
-                                                        <li><a class="dropdown-item" href="?bulan=6">Juni</a></li>
-                                                        <li><a class="dropdown-item" href="?bulan=7">Juli</a></li>
-                                                        <li><a class="dropdown-item" href="?bulan=8">Agustus</a></li>
-                                                        <li><a class="dropdown-item" href="?bulan=9">September</a></li>
-                                                        <li><a class="dropdown-item" href="?bulan=10">Oktober</a></li>
-                                                        <li><a class="dropdown-item" href="?bulan=11">November</a></li>
-                                                        <li><a class="dropdown-item" href="?bulan=12">Desember</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col-1">
-                                                <a href="./data_pengisian_bbm.php" class="btn btn-danger py-1 my-auto" title="Refresh Page"><i class="bi bi-arrow-clockwise fs-5"></i></a>
-                                            </div>
-                                        </div><!-- End Search Bar -->
-
                                         <table class="table table-borderless">
                                             <thead>
                                                 <tr>
@@ -281,17 +264,6 @@ include 'head.php';
     </main>
     <!-- End #main -->
 
-    <!-- ======= Footer ======= -->
-    <!-- <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-    </footer> -->
-    <!-- End Footer -->
-
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
@@ -306,6 +278,10 @@ include 'head.php';
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+        window.print()
+    </script>
 
 </body>
 
